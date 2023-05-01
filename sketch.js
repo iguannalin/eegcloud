@@ -1,7 +1,7 @@
 // Code from Jason Snell (https://openprocessing.org/sketch/1748494)
 let mockEEG;
 let tSize = 20;
-let isTesting = true;
+let isTesting = false;
 let isWaiting = true; // waiting for muse 2 to be active
 let img;
 let groupData = [];
