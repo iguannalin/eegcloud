@@ -37,6 +37,6 @@ function calculateHue(eeg) {
   // get the left and right closest hardset hues
   const leftHue = hues[constrain(left, 0, 4)];
   const rightHue = hues[constrain(right, 0, 4)];
-  
+  print(leftHue, rightHue);
   return [leftHue, rightHue];
 }

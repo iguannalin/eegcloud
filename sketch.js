@@ -1,17 +1,20 @@
 // Code from Jason Snell (https://openprocessing.org/sketch/1748494)
 let mockEEG;
 let tSize = 20;
-let isTesting = false;
+let isTesting = true;
 let isWaiting = true; // waiting for muse 2 to be active
 let img;
 let groupData = [];
+let font;
 
 function preload() {
   mockEEG = loadJSON("./mockData.json");
+  font = loadFont('Inter-Medium.ttf');
   img = loadImage("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9zpUpOYnNHzkdvdscdzC5IME3_X-7OTHtFl36moXL3qHVawaDU4uNS_BqrOm6H2qltUE&usqp=CAU");
 }
 
 function setup() {
+  textFont(font);
   createCanvas(windowWidth, windowHeight - 30);
   colorMode(HSB, 100);
   setupMuse();
@@ -28,7 +31,7 @@ function draw() {
   // displayData();
   let gD = sendData(colorData);
   groupData.push(gD);
-  sendGroupData(groupData);
+  // sendGroupData(groupData);
   // printValues(); // records new mockData.json file and saves it
 }
 
@@ -49,7 +52,6 @@ function displayPrompt() {
     textAlign(CENTER);
     textWrap(WORD);
     textSize(24);
-    textFont('Helvetica');
     if (ppg.bpm && ppg.bpm > 35) {
       fill('white');
       translate(width/2, height/2);
