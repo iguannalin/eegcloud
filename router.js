@@ -13,6 +13,6 @@ function sendData(colorData) {
 }
 
 function sendGroupData(data) {
-  let url = `https://dweet.io/dweet/for/${groupGUID}?${JSON.stringify(data)}`;
+  let url = `https://dweet.io/dweet/for/${individualGUID}?${JSON.stringify(data)}`;
   loadJSON(url);
 }
