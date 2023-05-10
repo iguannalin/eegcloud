@@ -37,6 +37,26 @@ function printValues(count = 500) {
   }
 }
 
+function displayData() {
+  let tSize = 20;
+  let tHeight = 30;
+  textSize(tSize / 2);
+  text("BATTERY: " + batteryLevel, width - 80, 10);
+
+  textSize(tSize);
+  text("DELTA: " + eeg.delta, 10, tSize + (tHeight += tSize));
+  text("THETA: " + eeg.theta, 10, tSize + (tHeight += tSize));
+  text("ALPHA: " + eeg.alpha, 10, tSize + (tHeight += tSize));
+  text("BETA:  " + eeg.beta, 10, tSize + (tHeight += tSize));
+  text("GAMMA: " + eeg.gamma, 10, tSize + (tHeight += tSize));
+
+  if (ppg.heartbeat) {
+    text("HEART bpm: " + ppg.bpm + " •", 10, tSize + (tHeight += tSize));
+  } else {
+    text("HEART bpm: " + ppg.bpm, 10, tSize + (tHeight += tSize));
+  }
+}
+
 function printAllowedFeatures() {
   //testing only
   // printing to see if this browser and website allows web bluetooth 
