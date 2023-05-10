@@ -9,6 +9,8 @@ function routeData(hueValue) {
     loadJSON(`https://dweet.io/get/latest/dweet/for/${routerGUID}`, (data) => {
       if (data.with && data.with[0].content) {
         toSendToRouter = data.with[0].content;
+      } else {
+        toSendToRouter = hueValue;
       }
     });
   }
@@ -22,6 +24,8 @@ function sendData(GUID, hueValue, sendGroupData = false) {
         let groupColor = data.with[0].content;
         hueValue.hue1 = (hueValue.hue1 + groupColor.hue1) / 2;
         hueValue.hue2 = (hueValue.hue2 + groupColor.hue2) / 2;
+        sendData(GUID, hueValue);
+      } else {
         sendData(GUID, hueValue);
       }
     });
