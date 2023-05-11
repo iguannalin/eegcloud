@@ -1,6 +1,6 @@
 // Code from Jason Snell (https://openprocessing.org/sketch/1748494)
 let mockEEG;
-let isTesting = true;
+let isTesting = false;
 let isMuseActive = true; // waiting for muse 2 to be active
 let img;
 let font;
