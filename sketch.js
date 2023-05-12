@@ -1,21 +1,22 @@
 // Code from Jason Snell (https://openprocessing.org/sketch/1748494)
 let mockEEG;
-let isTesting = false;
+let isTesting = true;
 let isMuseActive = true; // waiting for muse 2 to be active
 let img;
 let font;
-let routerGUID = "b73009ec-1002-4de7-9aae-c6eb718223a6";
+let arduinoOne = "b73009ec-1002-4de7-9aae-c6eb718223a6";
+let arduinoTwo = "46b92c3b-4b2c-4e22-9485-de7910b15db6";
 let prompts = [
-  { prompt: "What is the memory you keep reliving?", GUID: "4ef9a56d-126f-4093-8970-75aae1895584", groupGUID: "403bbc6d-e1ef-447e-9af9-6cd2b56e82ae" },
-  { prompt: "Think of a happy memory.", GUID: "0fad8ef1-2ed8-4ce4-81d5-a69da364d4d8", groupGUID: "506bad4e-b286-4407-ba66-44130bd075f0" },
-  { prompt: "What is something that is stressing you out?", GUID: "73e1af17-c2a5-492f-a32c-1e4592c8270e", groupGUID: "84059ce3-d729-4913-818b-dfd77cc7dade" }
+  "What is the memory you keep reliving?",
+  "Think of a happy memory.",
+  "What is something that is stressing you out?",
 ];
 let promptIndex = 0;
 
 function preload() {
-  mockEEG = loadJSON("./mockData.json");
-  font = loadFont('Inter-Medium.ttf');
-  img = loadImage("image.png");
+  mockEEG = loadJSON("assets/mockData.json");
+  font = loadFont('assets/Inter-Medium.ttf');
+  img = loadImage("assets/image.png");
 }
 
 function setup() {
@@ -35,8 +36,10 @@ function draw() {
 
   let colorData = calculateHue();
   displayBackground();
-  displayPrompt(prompts[promptIndex].prompt);
-  routeData(colorData);
+  displayPrompt(prompts[promptIndex]);
+  sendData(arduinoOne, colorData);
+  // sendData(arduinoOne, colorData);
+  // routeData(colorData);
 }
 
 function touchEnded() {
