@@ -38,7 +38,7 @@ function draw() {
   displayBackground();
   displayPrompt(prompts[promptIndex]);
   sendData(arduinoOne, colorData);
-  // sendData(arduinoOne, colorData);
+  // sendData(arduinoTwo, colorData);
   // routeData(colorData);
 }
 
